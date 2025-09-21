@@ -1,0 +1,226 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Mental Health Signal Detection (Reddit) | SV Portfolio</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+  </head>
+  <body class="is-preload">
+    <div id="wrapper" class="fade-in">
+
+      <!-- Header -->
+      <header id="header">
+        <a href="index.html#projects" class="logo">Sakthivel Vinayagam · Portfolio</a>
+      </header>
+
+      <!-- Nav (same as homepage) -->
+      <nav id="nav">
+        <ul class="links">
+          <li><a href="index.html#projects">Projects</a></li>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+        <ul class="icons">
+          <li><a href="https://www.linkedin.com/in/sakthivel-vinayagam" class="icon brands fa-linkedin" target="_blank" rel="noopener"><span class="label">LinkedIn</span></a></li>
+          <li><a href="https://github.com/SakthivelVinayagam" class="icon brands fa-github" target="_blank" rel="noopener"><span class="label">GitHub</span></a></li>
+          <li><a href="https://leetcode.com/u/Sakthi7531/" class="icon solid fa-code" target="_blank" rel="noopener"><span class="label">LeetCode</span></a></li>
+          <li><a href="mailto:sakthibala7531@gmail.com" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+        </ul>
+      </nav>
+
+      <!-- Main -->
+      <div id="main">
+
+        <!-- Hero header -->
+        <article class="post featured">
+          <header class="major">
+            <span class="date">September 2025</span>
+            <h2>Mental Health Signal Detection from Reddit Support Groups</h2>
+            <p>
+              Built an NLP pipeline on 18k+ Reddit posts to detect mental-health risk levels (low/medium/high).
+              Fine-tuned DistilBERT with pooling, MSD dropout, EMA, and class-weighted loss, achieving stronger
+              macro-F1 and better minority-class recall. Focused on ethical handling, reproducibility, and deployment readiness.
+            </p>
+          </header>
+
+          <!-- Banner image (replace) -->
+          <a class="image main">
+            <img src="images/Dissertation_Reddit.jpg" alt="Mental health NLP project banner" />
+          </a>
+
+          <!-- CTAs -->
+          <ul class="actions special">
+            <li><a href="docs/dissertation_case_study.pdf" class="button" target="_blank" rel="noopener">Case Study (PDF)</a></li>
+            <li><a href="https://github.com/SakthivelVinayagam/mental-health-signal-detection-nlp" class="button" target="_blank" rel="noopener">GitHub</a></li>
+          </ul>
+          <p class="tags">Python · PyTorch · Transformers · NLP · Machine Learning</p>
+ 
+        </article>
+
+        <!-- Content -->
+        <section class="posts">
+
+          <!-- 1. Executive Summary -->
+          <article id="overview">
+            <header><h2>Executive Summary</h2></header>
+            <p>
+              Built an end-to-end NLP pipeline to triage mental-health related posts from Reddit support communities.
+              The goal: detect <strong>risk level</strong> to support moderation workflows and research. The final model
+              improved macro-F1 over strong baselines and delivered more stable predictions on minority classes via
+              targeted regularisation and class balancing.
+            </p>
+            <ul>
+              <li><strong>Task:</strong> 3-class risk classification (Low / Medium / High) on short-to-medium texts.</li>
+              <li><strong>Scale:</strong> ~18k posts after filtering, de-duplication, and quality checks.</li>
+              <li><strong>Model:</strong> DistilBERT + mean+max pooling head; MSD dropout; EMA; LLRD.</li>
+              <li><strong>Training:</strong> Stratified 5-fold CV with class-weighted cross-entropy; early-stopping on macro-F1.</li>
+              <li><strong>Metrics:</strong> Macro-F1 (primary), per-class F1, confusion matrices, calibration.</li>
+            </ul>
+          </article>
+
+          <!-- 2. Data, Labelling & Ethics -->
+          <article id="data-ethics">
+            <header><h2>Data, Labelling & Ethics</h2></header>
+            <p>
+              Posts were collected from public Reddit support communities. I applied
+              <strong>privacy-focused preprocessing</strong> (e.g., removal of usernames/IDs, links, and PII patterns),
+              strict <strong>de-duplication</strong>, and filtering for language/length. Labels combined moderator signals,
+              keywords, and an <strong>emotion→risk mapping</strong> rubric designed for consistency. The project
+              respects platform TOS and is intended for <strong>research</strong> and <strong>triage-assistance</strong>,
+              not for automated clinical decision-making.
+            </p>
+            <ul>
+              <li><strong>Preprocessing:</strong> lowercasing, URL/handle stripping, light normalisation, emoji handling.</li>
+              <li><strong>Ethics:</strong> no attempt to identify individuals; aggregate-only reporting; risks discussed in report.</li>
+              <li><strong>Imbalance:</strong> High-risk class underrepresented → addressed with class weights + robust validation.</li>
+            </ul>
+          </article>
+
+          <!-- 3. Modelling Approach -->
+          <article id="method">
+            <header><h2>Modelling Approach</h2></header>
+            <p>
+              Starting from DistilBERT, I used a <strong>pooling head</strong> (concatenated mean + max across token embeddings)
+              feeding into a dropout-regularised classification layer. To stabilise training and improve minority-class recall:
+            </p>
+            <ul>
+              <li><strong>MSD Dropout:</strong> multi-sample dropout on the classifier head to improve generalisation.</li>
+              <li><strong>EMA:</strong> moving average of weights used for evaluation checkpoints.</li>
+              <li><strong>LLRD:</strong> layer-wise learning-rate decay to preserve lower-layer linguistic features.</li>
+              <li><strong>Class-weighted loss:</strong> counteracts label imbalance.</li>
+              <li><strong>Optimiser/Schedule:</strong> AdamW with warmup + cosine decay; early stop on macro-F1 (CV).</li>
+            </ul>
+            
+          </article>
+
+          <!-- 4. Experiments & Ablations -->
+          <article id="experiments">
+            <header><h2>Experiments & Ablations</h2></header>
+            <p>
+              I ran ablations to quantify the impact of each component (5-fold CV, macro-F1). Headline observations:
+            </p>
+            <ul>
+              <li><strong>Pooling:</strong> mean+max &gt; [CLS] alone — better robustness to long/varied posts.</li>
+              <li><strong>MSD:</strong> consistent +1–2 pts macro-F1 by reducing overfit on majority class.</li>
+              <li><strong>EMA:</strong> steadier validation curves and higher minority-class recall.</li>
+              <li><strong>LLRD:</strong> small but reliable gains; faster convergence.</li>
+            </ul>
+            <p class="note">
+              Full tables, fold-wise metrics, and configs are in the PDF report and repository.
+            </p>
+          </article>
+
+          <!-- 5. Results -->
+          <article id="results">
+            <header><h2>Results</h2></header>
+            <p>
+              The final model achieved a higher <strong>macro-F1</strong> than baselines (logistic regression, linear SVM,
+              vanilla DistilBERT head). Per-class F1 shows the largest lift on <em>High</em> risk due to class-weighted loss
+              + MSD/EMA combo.
+            </p>
+           
+            <ul>
+              <li><strong>Stability:</strong> tight variance across folds; calibration improved after temperature scaling.</li>
+              <li><strong>Interpretability:</strong> token attribution highlights relevant emotional/risk indicators.</li>
+              <li><strong>Error profile:</strong> most confusion between Medium vs High for ambiguous phrasing and sarcasm.</li>
+            </ul>
+          </article>
+
+          <!-- 6. Error Analysis -->
+          <article id="analysis">
+            <header><h2>Error Analysis</h2></header>
+            <p>
+              I reviewed false positives/negatives to refine heuristics and preprocessing. Typical issues:
+              <em>context-dependency</em> (missing prior posts), <em>indirect expressions</em> of distress, and
+              <em>domain slang</em>. Adding a small set of <strong>domain stopwords</strong> and mild
+              <strong>data augmentation</strong> (synonym swap, back-translation) helped reduce edge-case errors.
+            </p>
+            
+          </article>
+
+          <!-- 7. Reproducibility & Deployment -->
+          <article id="repro">
+            <header><h2>Reproducibility & Deployment</h2></header>
+            <ul>
+              <li><strong>Reproducibility:</strong> deterministic seeds, environment YAML, experiment configs per fold.</li>
+              <li><strong>Pipelines:</strong> data → train → evaluate → report; CLI entrypoints for each stage.</li>
+              <li><strong>Artifacts:</strong> saved best checkpoints (EMA), tensorboard logs, confusion matrices.</li>
+              <li><strong>Packaging:</strong> minimal FastAPI inference stub and batching utility for CSV/JSON inputs.</li>
+            </ul>
+          </article>
+
+          <!-- 8. What I’d Improve Next -->
+          <article id="next">
+            <header><h2>Next Steps</h2></header>
+            <ul>
+              <li><strong>Multi-task learning:</strong> auxiliary emotion detection to support risk classification.</li>
+              <li><strong>Context windows:</strong> include author/post history (where policy allows) for ambiguous cases.</li>
+              <li><strong>Active learning:</strong> human-in-the-loop relabelling for the hardest Medium/High boundary.</li>
+              <li><strong>Safety rails:</strong> threshold-based abstention and escalation rules for production use.</li>
+            </ul>
+          </article>
+
+        </section>
+
+        <!-- Back -->
+        <footer>
+          <div class="pagination">
+            <a href="index.html#projects" class="button">← Back to Projects</a>
+          </div>
+        </footer>
+
+      </div><!-- /#main -->
+
+      <!-- Footer -->
+      <footer id="footer">
+        <section class="split contact">
+          <section class="alt"><h3>Location</h3><p>Colchester, United Kingdom</p></section>
+          <section><h3>Email</h3><p><a href="mailto:sakthibala7531@gmail.com">sakthibala7531@gmail.com</a></p></section>
+          <section>
+            <h3>Social</h3>
+            <ul class="icons alt">
+              <li><a href="https://www.linkedin.com/in/sakthivel-vinayagam" class="icon brands alt fa-linkedin" target="_blank" rel="noopener"></a></li>
+              <li><a href="https://github.com/SakthivelVinayagam" class="icon brands alt fa-github" target="_blank" rel="noopener"></a></li>
+              <li><a href="https://leetcode.com/u/Sakthi7531/" class="icon solid alt fa-code" target="_blank" rel="noopener"></a></li>
+            </ul>
+          </section>
+        </section>
+      </footer>
+
+      <div id="copyright">
+        <ul><li>&copy; 2025 Sakthivel Vinayagam</li><li>Design: <a href="https://html5up.net" target="_blank" rel="noopener">HTML5 UP</a></li></ul>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.scrollex.min.js"></script>
+    <script src="assets/js/jquery.scrolly.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>

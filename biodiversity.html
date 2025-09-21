@@ -1,0 +1,190 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Biodiversity Modelling (Ecology) | SV Portfolio</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+  </head>
+  <body class="is-preload">
+    <div id="wrapper" class="fade-in">
+
+      <!-- Header -->
+      <header id="header">
+        <a href="index.html#projects" class="logo">Sakthivel Vinayagam · Portfolio</a>
+      </header>
+
+      <!-- Nav -->
+      <nav id="nav">
+        <ul class="links">
+          <li><a href="index.html#projects">Projects</a></li>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+        <ul class="icons">
+          <li><a href="https://www.linkedin.com/in/sakthivel-vinayagam" class="icon brands fa-linkedin" target="_blank" rel="noopener"><span class="label">LinkedIn</span></a></li>
+          <li><a href="https://github.com/SakthivelVinayagam" class="icon brands fa-github" target="_blank" rel="noopener"><span class="label">GitHub</span></a></li>
+          <li><a href="https://leetcode.com/u/Sakthi7531/" class="icon solid fa-code" target="_blank" rel="noopener"><span class="label">LeetCode</span></a></li>
+          <li><a href="mailto:sakthibala7531@gmail.com" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+        </ul>
+      </nav>
+
+      <!-- Main -->
+      <div id="main">
+
+        <!-- Hero -->
+        <article class="post featured">
+          <header class="major">
+            <h2>Biodiversity Modelling (Ecology)</h2>
+            <p>
+              Modelled biodiversity variation using ecological variables such as climate, elevation, and land cover. 
+              Applied regression and regularisation with cross-validation to identify key environmental drivers while 
+              ensuring robust generalisation. Demonstrated the adaptability of data science methods to sustainability 
+              and ecological research domains.
+            </p>
+          </header>
+
+          <!-- Banner image (replace) -->
+          <a class="image main">
+            <img src="images/Biodiversity.jpg" alt="Biodiversity modelling banner" />
+          </a>
+
+          <!-- CTAs -->
+          <ul class="actions special">
+            <li><a href="docs/biodiversity_report.pdf" class="button" target="_blank" rel="noopener">Analysis (PDF)</a></li>
+            <li><a href="https://github.com/SakthivelVinayagam/biodiversity-modelling-scotland" class="button" target="_blank" rel="noopener">GitHub</a></li>
+          </ul>
+
+          <p class="tags">R · Regression · Cross-validation · Environmental Data · Statistical Modelling</p>
+          
+        </article>
+
+        <!-- Content -->
+        <section class="posts">
+
+          <!-- Overview -->
+          <article id="overview">
+            <header><h2>Overview</h2></header>
+            <p>
+              This project investigates ecological datasets to understand factors that explain biodiversity variation.
+              By applying regression techniques and cross-validation, I aimed to identify which environmental variables
+              (e.g., temperature, rainfall, elevation, land cover) are most predictive of biodiversity indicators.
+            </p>
+            <ul>
+              <li><strong>Task:</strong> Predict biodiversity variation using ecological covariates.</li>
+              <li><strong>Stack:</strong> R, tidyverse, caret.</li>
+              <li><strong>Outputs:</strong> Variable importance, regression models, and validation metrics.</li>
+            </ul>
+          </article>
+
+          <!-- Data -->
+          <article id="data">
+            <header><h2>Data</h2></header>
+            <ul>
+              <li><strong>Inputs:</strong> Environmental features (temperature, precipitation, elevation, land cover, human impact indices).</li>
+              <li><strong>Target:</strong> biodiversity indicator (species richness / abundance index).</li>
+              <li><strong>Preprocessing:</strong> scaling numeric predictors, encoding categorical covariates, removing collinear features.</li>
+              <li><strong>Split:</strong> k-fold cross-validation for generalisation testing.</li>
+            </ul>
+          </article>
+
+          <!-- Methods -->
+          <article id="method">
+            <header><h2>Methods</h2></header>
+            <p>
+              I used regression models to quantify the relationship between predictors and biodiversity outcomes:
+            </p>
+            <ul>
+              <li>Linear regression for baseline interpretability.</li>
+              <li>Regularised regression (Ridge, Lasso) to handle multicollinearity and select features.</li>
+              <li>Cross-validation (10-fold) to assess generalisation stability.</li>
+              <li>Adjusted R² and RMSE as evaluation metrics.</li>
+            </ul>
+            
+          </article>
+
+          <!-- Results -->
+          <article id="results">
+            <header><h2>Results</h2></header>
+            <ul>
+              <li>Identified <strong>climate (temperature, precipitation)</strong> as key drivers of biodiversity variation.</li>
+              <li>Regularised regression improved robustness, reducing overfitting compared to OLS.</li>
+              <li>Cross-validation confirmed stability across folds with moderate predictive power.</li>
+              <li>Findings highlight importance of multi-factor analysis in ecological studies.</li>
+            </ul>
+          </article>
+
+          <!-- Limitations -->
+          <article id="limits">
+            <header><h2>Limitations</h2></header>
+            <ul>
+              <li>Dataset size limited predictive accuracy.</li>
+              <li>Biodiversity influenced by complex interactions not fully captured here (species interactions, land-use history).</li>
+              <li>Correlation ≠ causation — models explain variation but don’t prove ecological mechanisms.</li>
+            </ul>
+          </article>
+
+          <!-- Reproducibility -->
+          <article id="repro">
+            <header><h2>Reproducibility & Packaging</h2></header>
+            <ul>
+              <li>Config-driven workflow: data load → preprocessing → regression → evaluation.</li>
+              <li>Used caret pipeline for cross-validation and hyperparameter tuning.</li>
+              <li>Reproducible RMarkdown report with plots and tables for stakeholders.</li>
+            </ul>
+
+          </article>
+
+          <!-- Next Steps -->
+          <article id="next">
+            <header><h2>Next Steps</h2></header>
+            <ul>
+              <li>Extend dataset with higher-resolution environmental variables.</li>
+              <li>Incorporate non-linear models (Random Forest, GAMs) for complex interactions.</li>
+              <li>Analyse temporal changes in biodiversity over multiple years.</li>
+            </ul>
+          </article>
+
+        </section>
+
+        <!-- Back -->
+        <footer>
+          <div class="pagination">
+            <a href="index.html#projects" class="button">← Back to Projects</a>
+          </div>
+        </footer>
+
+      </div><!-- /#main -->
+
+      <!-- Footer -->
+      <footer id="footer">
+        <section class="split contact">
+          <section class="alt"><h3>Location</h3><p>Colchester, United Kingdom</p></section>
+          <section><h3>Email</h3><p><a href="mailto:sakthibala7531@gmail.com">sakthibala7531@gmail.com</a></p></section>
+          <section>
+            <h3>Social</h3>
+            <ul class="icons alt">
+              <li><a href="https://www.linkedin.com/in/sakthivel-vinayagam" class="icon brands alt fa-linkedin" target="_blank" rel="noopener"></a></li>
+              <li><a href="https://github.com/SakthivelVinayagam" class="icon brands alt fa-github" target="_blank" rel="noopener"></a></li>
+              <li><a href="https://leetcode.com/u/Sakthi7531/" class="icon solid alt fa-code" target="_blank" rel="noopener"></a></li>
+            </ul>
+          </section>
+        </section>
+      </footer>
+
+      <div id="copyright">
+        <ul><li>&copy; 2025 Sakthivel Vinayagam</li><li>Design: <a href="https://html5up.net" target="_blank" rel="noopener">HTML5 UP</a></li></ul>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.scrollex.min.js"></script>
+    <script src="assets/js/jquery.scrolly.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>

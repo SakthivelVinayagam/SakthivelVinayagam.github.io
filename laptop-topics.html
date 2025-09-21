@@ -1,0 +1,202 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Laptop Review Topic Modelling (NLP) | SV Portfolio</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+  </head>
+  <body class="is-preload">
+    <div id="wrapper" class="fade-in">
+
+      <!-- Header -->
+      <header id="header">
+        <a href="index.html#projects" class="logo">Sakthivel Vinayagam · Portfolio</a>
+      </header>
+
+      <!-- Nav -->
+      <nav id="nav">
+        <ul class="links">
+          <li><a href="index.html#projects">Projects</a></li>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+        <ul class="icons">
+          <li><a href="https://www.linkedin.com/in/sakthivel-vinayagam" class="icon brands fa-linkedin" target="_blank" rel="noopener"><span class="label">LinkedIn</span></a></li>
+          <li><a href="https://github.com/SakthivelVinayagam" class="icon brands fa-github" target="_blank" rel="noopener"><span class="label">GitHub</span></a></li>
+          <li><a href="https://leetcode.com/u/Sakthi7531/" class="icon solid fa-code" target="_blank" rel="noopener"><span class="label">LeetCode</span></a></li>
+          <li><a href="mailto:sakthibala7531@gmail.com" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+        </ul>
+      </nav>
+
+      <!-- Main -->
+      <div id="main">
+
+        <!-- Hero -->
+        <article class="post featured">
+          <header class="major">
+            <h2>Laptop Review Topic Modelling (NLP)</h2>
+            <p>
+              Applied unsupervised NLP on consumer laptop reviews to extract themes such as battery life, performance, and value for money. 
+              Compared LDA with BERTopic for topic coherence and interpretability, then built visualisations (heatmaps, sentiment by topic) to reveal brand-specific strengths and weaknesses.
+            </p>
+          </header>
+
+          <!-- Banner image (replace) -->
+          <a class="image main">
+            <img src="images/Laptop_topics.png" alt="Laptop topic modelling banner" />
+          </a>
+
+          <!-- CTAs -->
+          <ul class="actions special">
+            <li><a href="docs/laptop_topics_report.pdf" class="button" target="_blank" rel="noopener">Case Study (PDF)</a></li>
+            <li><a href="https://github.com/SakthivelVinayagam/laptop-reviews-topic-modelling" class="button" target="_blank" rel="noopener">GitHub</a></li>
+          </ul>
+
+          <p class="tags">Python · NLP · Topic Modelling · BERTopic · LDA</p>
+
+        </article>
+
+        <!-- Content -->
+        <section class="posts">
+
+          <!-- Overview -->
+          <article id="overview">
+            <header><h2>Overview</h2></header>
+            <p>
+              The goal was to understand what customers discuss most across laptop brands and models, and whether
+              topics align with sentiment (e.g., “battery life” often negative; “keyboard” mixed). I cleaned and
+              deduplicated review text, created document embeddings, and extracted topics with two approaches:
+              <strong>LDA</strong> (classic bag-of-words) and <strong>BERTopic</strong> (embedding-based with HDBSCAN).
+            </p>
+            <ul>
+              <li><strong>Task:</strong> Unsupervised topic discovery + sentiment trend exploration.</li>
+              <li><strong>Scale:</strong> (Replace with your count) e.g., ~10–20k review snippets across brands.</li>
+              <li><strong>Outputs:</strong> Topic list with top words/examples, brand-topic heatmaps, sentiment by topic.</li>
+              <li><strong>Stack:</strong> Python, pandas, scikit-learn, spaCy/NLTK, BERTopic, Gensim (LDA), plotly.</li>
+            </ul>
+          </article>
+
+          <!-- Data -->
+          <article id="data">
+            <header><h2>Data & Preprocessing</h2></header>
+            <ul>
+              <li><strong>Source:</strong> Public e-commerce / review datasets (brand, model, text, rating).</li>
+              <li><strong>Cleaning:</strong> lowercasing, punctuation/HTML removal, emoji/URL stripping.</li>
+              <li><strong>Normalisation:</strong> lemmatisation; light stopword extension for product terms (e.g., “laptop”, “windows”).</li>
+              <li><strong>De-duplication:</strong> remove near-duplicates using cosine similarity threshold.</li>
+              <li><strong>Sentiment:</strong> rating-to-polarity mapping (e.g., ≤2 negative, 3 neutral, ≥4 positive) or lexicon-based as fallback.</li>
+            </ul>
+          </article>
+
+          <!-- Methods -->
+          <article id="method">
+            <header><h2>Methods</h2></header>
+            <p>
+              I compared topic quality and interpretability across LDA and BERTopic:
+            </p>
+            <ul>
+              <li><strong>LDA:</strong> vectorised text (TF-IDF / BoW), tuned topic count <em>k</em>, filtered low-frequency terms; measured c_v coherence.</li>
+              <li><strong>BERTopic:</strong> transformer embeddings → UMAP dimension reduction → HDBSCAN clustering → c-TF-IDF per topic; measured topic diversity and coherence.</li>
+              <li><strong>Labelling:</strong> manual topic names from top words + exemplar documents.</li>
+            </ul>
+            
+          </article>
+
+          <!-- Visuals -->
+          <article id="viz">
+            <header><h2>Key Visualisations</h2></header>
+            <ul>
+              <li>Topic prevalence bar chart (BERTopic/LDA) with representative n-grams.</li>
+              <li>Brand × Topic heatmap to compare focus areas (e.g., gaming brands over-index on thermals/GPUs).</li>
+              <li>Sentiment by topic (stacked bars) to highlight pain points (e.g., battery, fan noise).</li>
+              <li>UMAP 2D embedding plot showing cluster separations and outliers.</li>
+            </ul>
+            
+          </article>
+
+          <!-- Results -->
+          <article id="results">
+            <header><h2>Findings</h2></header>
+            <ul>
+              <li>Core topics: <strong>Battery life</strong>, <strong>Display/Screen</strong>, <strong>Performance</strong>, <strong>Thermals/Fans</strong>, <strong>Keyboard/Trackpad</strong>, <strong>Build/Weight</strong>, <strong>Price/Value</strong>.</li>
+              <li>BERTopic produced <strong>more coherent, specific topics</strong> (better short phrase capture) than LDA at the same <em>k</em>.</li>
+              <li>Sentiment skew: “battery life” and “thermals” tilting negative; “display” and “keyboard” more mixed/positive depending on brand.</li>
+              <li>Brand clusters reflect positioning: e.g., ultrabooks → positive on weight/build, gaming → mixed on thermals/noise.</li>
+            </ul>
+          </article>
+
+          <!-- Limitations -->
+          <article id="limits">
+            <header><h2>Limitations</h2></header>
+            <ul>
+              <li>Topic labels are human-curated; some overlap between “performance” and “GPU/CPU”.</li>
+              <li>Sentiment from star ratings ≠ true sentiment of the text; sarcasm/nuance can mislead.</li>
+              <li>Sampling bias: review platforms skew toward certain buyer segments.</li>
+            </ul>
+          </article>
+
+          <!-- Reproducibility -->
+          <article id="repro">
+            <header><h2>Reproducibility & Packaging</h2></header>
+            <ul>
+              <li>Config-driven pipeline: clean → deduplicate → embed/vectorise → model → charts.</li>
+              <li>Saved topic models, coherence metrics, and labelled topic dictionary.</li>
+              <li>Notebook/Script to regenerate plots and HTML assets.</li>
+            </ul>
+=
+          </article>
+
+          <!-- Next steps -->
+          <article id="next">
+            <header><h2>Next Steps</h2></header>
+            <ul>
+              <li>Use supervised sentiment models (e.g., transformer fine-tuning) on text instead of star proxies.</li>
+              <li>Add product metadata (price tier, CPU/GPU) to relate topics to specs.</li>
+              <li>Deploy a small dashboard (Streamlit/Gradio) for topic/sentiment exploration by brand/model.</li>
+            </ul>
+          </article>
+
+        </section>
+
+        <!-- Back -->
+        <footer>
+          <div class="pagination">
+            <a href="index.html#projects" class="button">← Back to Projects</a>
+          </div>
+        </footer>
+
+      </div><!-- /#main -->
+
+      <!-- Footer -->
+      <footer id="footer">
+        <section class="split contact">
+          <section class="alt"><h3>Location</h3><p>Colchester, United Kingdom</p></section>
+          <section><h3>Email</h3><p><a href="mailto:sakthibala7531@gmail.com">sakthibala7531@gmail.com</a></p></section>
+          <section>
+            <h3>Social</h3>
+            <ul class="icons alt">
+              <li><a href="https://www.linkedin.com/in/sakthivel-vinayagam" class="icon brands alt fa-linkedin" target="_blank" rel="noopener"></a></li>
+              <li><a href="https://github.com/SakthivelVinayagam" class="icon brands alt fa-github" target="_blank" rel="noopener"></a></li>
+              <li><a href="https://leetcode.com/u/Sakthi7531/" class="icon solid alt fa-code" target="_blank" rel="noopener"></a></li>
+            </ul>
+          </section>
+        </section>
+      </footer>
+
+      <div id="copyright">
+        <ul><li>&copy; 2025 Sakthivel Vinayagam</li><li>Design: <a href="https://html5up.net" target="_blank" rel="noopener">HTML5 UP</a></li></ul>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.scrollex.min.js"></script>
+    <script src="assets/js/jquery.scrolly.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>

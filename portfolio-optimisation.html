@@ -1,0 +1,191 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Portfolio Optimisation (Finance) | SV Portfolio</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+  </head>
+  <body class="is-preload">
+    <div id="wrapper" class="fade-in">
+
+      <!-- Header -->
+      <header id="header">
+        <a href="index.html#projects" class="logo">Sakthivel Vinayagam · Portfolio</a>
+      </header>
+
+      <!-- Nav -->
+      <nav id="nav">
+        <ul class="links">
+          <li><a href="index.html#projects">Projects</a></li>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+        <ul class="icons">
+          <li><a href="https://www.linkedin.com/in/sakthivel-vinayagam" class="icon brands fa-linkedin" target="_blank" rel="noopener"><span class="label">LinkedIn</span></a></li>
+          <li><a href="https://github.com/SakthivelVinayagam" class="icon brands fa-github" target="_blank" rel="noopener"><span class="label">GitHub</span></a></li>
+          <li><a href="https://leetcode.com/u/Sakthi7531/" class="icon solid fa-code" target="_blank" rel="noopener"><span class="label">LeetCode</span></a></li>
+          <li><a href="mailto:sakthibala7531@gmail.com" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+        </ul>
+      </nav>
+
+      <!-- Main -->
+      <div id="main">
+
+        <!-- Hero -->
+        <article class="post featured">
+          <header class="major">
+            <h2>Portfolio Optimisation (Finance)</h2>
+            <p>
+              Constructed efficient frontiers using CAPM-based expected returns and compared allocation strategies including
+              mean–variance, risk-parity, and equal-weight benchmarks. Backtested portfolios with rolling windows to evaluate
+              Sharpe ratios, drawdowns, and stability, highlighting the trade-offs between risk and return.
+            </p>
+          </header>
+
+          <!-- Banner image (replace) -->
+          <a class="image main">
+            <img src="images/Portfolio_optimisation.png" alt="Portfolio optimisation banner" />
+          </a>
+
+          <!-- CTAs -->
+          <ul class="actions special">
+            <li><a href="docs/portfolio_optimisation_report.pdf" class="button" target="_blank" rel="noopener">Analysis (PDF)</a></li>
+            <li><a href="https://github.com/SakthivelVinayagam/portfolio-optimisation-capm" class="button" target="_blank" rel="noopener">GitHub</a></li>
+          </ul>
+
+          <p class="tags">Python · Quantitative Finance · Optimisation · Risk Analysis · Data Science</p>
+
+        </article>
+
+        <!-- Content -->
+        <section class="posts">
+
+          <!-- Overview -->
+          <article id="overview">
+            <header><h2>Overview</h2></header>
+            <p>
+              The project demonstrates quantitative finance techniques to build and evaluate diversified portfolios.
+              Using historical returns, I estimated expected return, risk, and covariance matrices to simulate
+              allocation strategies. The focus was on risk-adjusted performance, stability, and reproducibility.
+            </p>
+            <ul>
+              <li><strong>Task:</strong> Asset allocation and efficient frontier construction.</li>
+              <li><strong>Assets:</strong> Equity ETFs (replace with your tickers, e.g., SPY, QQQ, EFA).</li>
+              <li><strong>Methods:</strong> CAPM, mean–variance optimisation, risk parity, naive equal-weight.</li>
+              <li><strong>Stack:</strong> Python, pandas, NumPy, scikit-learn, cvxpy, matplotlib.</li>
+            </ul>
+          </article>
+
+          <!-- Data -->
+          <article id="data">
+            <header><h2>Data & Features</h2></header>
+            <ul>
+              <li><strong>Inputs:</strong> Daily adjusted close prices from Yahoo Finance (via yfinance API).</li>
+              <li><strong>Returns:</strong> log returns, monthly aggregation for stability.</li>
+              <li><strong>Covariance estimation:</strong> shrinkage (Ledoit-Wolf) vs sample covariance.</li>
+              <li><strong>Expected returns:</strong> CAPM with market factor, or historical mean.</li>
+              <li><strong>Constraints:</strong> no short-selling, weights sum to 1.</li>
+            </ul>
+          </article>
+
+          <!-- Method -->
+          <article id="method">
+            <header><h2>Optimisation Methods</h2></header>
+            <p>
+              Three portfolio construction methods were compared:
+            </p>
+            <ul>
+              <li><strong>Mean–variance optimisation:</strong> maximise Sharpe ratio subject to constraints.</li>
+              <li><strong>Risk parity:</strong> allocate such that each asset contributes equally to portfolio risk.</li>
+              <li><strong>Naive equal-weight:</strong> benchmark baseline (1/N allocation).</li>
+            </ul>
+          
+          </article>
+
+          <!-- Results -->
+          <article id="results">
+            <header><h2>Results & Insights</h2></header>
+            <ul>
+              <li>Efficient frontier showed significant diversification benefits over single-asset choices.</li>
+              <li>Mean–variance portfolios achieved highest Sharpe but were less stable across rolling windows.</li>
+              <li>Risk parity allocations offered smoother performance and lower drawdowns.</li>
+              <li>Naive equal-weight surprisingly competitive, underscoring difficulty of beating simple baselines.</li>
+            </ul>
+          </article>
+
+          <!-- Limitations -->
+          <article id="limits">
+            <header><h2>Limitations</h2></header>
+            <ul>
+              <li>CAPM assumes stable factor relationships, which may not hold across regimes.</li>
+              <li>Backtests ignore transaction costs and rebalancing friction.</li>
+              <li>Limited to equities; multi-asset expansion would improve diversification realism.</li>
+            </ul>
+          </article>
+
+          <!-- Reproducibility -->
+          <article id="repro">
+            <header><h2>Reproducibility & Packaging</h2></header>
+            <ul>
+              <li>Config-driven pipeline: fetch → clean → compute returns → optimise → backtest.</li>
+              <li>Stored config files (tickers, constraints) and saved frontier plots for each run.</li>
+              <li>Modular scripts + Jupyter notebook for exploration.</li>
+            </ul>
+
+          </article>
+
+          <!-- Next Steps -->
+          <article id="next">
+            <header><h2>Next Steps</h2></header>
+            <ul>
+              <li>Add bonds/commodities to broaden diversification.</li>
+              <li>Incorporate robust covariance estimators (e.g., Ledoit-Wolf shrinkage, factor models).</li>
+              <li>Cost-aware optimisation including turnover constraints.</li>
+              <li>Deploy interactive dashboard (Plotly Dash/Streamlit) for scenario analysis.</li>
+            </ul>
+          </article>
+
+        </section>
+
+        <!-- Back -->
+        <footer>
+          <div class="pagination">
+            <a href="index.html#projects" class="button">← Back to Projects</a>
+          </div>
+        </footer>
+
+      </div><!-- /#main -->
+
+      <!-- Footer -->
+      <footer id="footer">
+        <section class="split contact">
+          <section class="alt"><h3>Location</h3><p>Colchester, United Kingdom</p></section>
+          <section><h3>Email</h3><p><a href="mailto:sakthibala7531@gmail.com">sakthibala7531@gmail.com</a></p></section>
+          <section>
+            <h3>Social</h3>
+            <ul class="icons alt">
+              <li><a href="https://www.linkedin.com/in/sakthivel-vinayagam" class="icon brands alt fa-linkedin" target="_blank" rel="noopener"></a></li>
+              <li><a href="https://github.com/SakthivelVinayagam" class="icon brands alt fa-github" target="_blank" rel="noopener"></a></li>
+              <li><a href="https://leetcode.com/u/Sakthi7531/" class="icon solid alt fa-code" target="_blank" rel="noopener"></a></li>
+            </ul>
+          </section>
+        </section>
+      </footer>
+
+      <div id="copyright">
+        <ul><li>&copy; 2025 Sakthivel Vinayagam</li><li>Design: <a href="https://html5up.net" target="_blank" rel="noopener">HTML5 UP</a></li></ul>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.scrollex.min.js"></script>
+    <script src="assets/js/jquery.scrolly.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>

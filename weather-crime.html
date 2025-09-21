@@ -1,0 +1,208 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Weather–Crime Trends (Colchester, UK) | SV Portfolio</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+  </head>
+  <body class="is-preload">
+    <div id="wrapper" class="fade-in">
+
+      <!-- Header -->
+      <header id="header">
+        <a href="index.html#projects" class="logo">Sakthivel Vinayagam · Portfolio</a>
+      </header>
+
+      <!-- Nav -->
+      <nav id="nav">
+        <ul class="links">
+          <li><a href="index.html#projects">Projects</a></li>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+        <ul class="icons">
+          <li><a href="https://www.linkedin.com/in/sakthivel-vinayagam" class="icon brands fa-linkedin" target="_blank" rel="noopener"><span class="label">LinkedIn</span></a></li>
+          <li><a href="https://github.com/SakthivelVinayagam" class="icon brands fa-github" target="_blank" rel="noopener"><span class="label">GitHub</span></a></li>
+          <li><a href="https://leetcode.com/u/Sakthi7531/" class="icon solid fa-code" target="_blank" rel="noopener"><span class="label">LeetCode</span></a></li>
+          <li><a href="mailto:sakthibala7531@gmail.com" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+        </ul>
+      </nav>
+
+      <!-- Main -->
+      <div id="main">
+
+        <!-- Hero -->
+        <article class="post featured">
+          <header class="major">
+            <h2>Weather–Crime Trends Analysis (Colchester, UK)</h2>
+            <p>
+              Analysed 16k+ Colchester crime records alongside local weather data to reveal seasonal and spatial trends.
+              Built interactive dashboards and animated visualisations in R (ggplot2, plotly, leaflet) to uncover hotspots
+              and highlight weak-to-moderate associations between weather factors and crime categories.
+            </p>
+          </header>
+
+          <!-- Banner image (replace) -->
+          <a class="image main">
+            <img src="images/Weather_crime.jpg" alt="Weather–Crime analysis banner" />
+          </a>
+
+          <!-- CTAs -->
+          <ul class="actions special">
+            <li><a href="docs/weather_crime_report.html" class="button" target="_blank" rel="noopener">Analysis (HTML)</a></li>
+            <li><a href="https://github.com/SakthivelVinayagam/weather-crime-trends-colchester" class="button" target="_blank" rel="noopener">GitHub</a></li>
+          </ul>
+
+          <p class="tags">R · Data Visualisation · Time Series · Spatial Analysis · Interactive Dashboards</p>
+
+        </article>
+
+        <!-- Content -->
+        <section class="posts">
+
+          <!-- Overview -->
+          <article id="overview">
+            <header><h2>Overview</h2></header>
+            <p>
+              This project explores how crime patterns in Colchester vary with time, seasonality, and weather.
+              The pipeline ingests monthly crime reports and daily weather observations, aligns them by date and
+              area, and produces interactive visuals for exploratory analysis and stakeholder reporting.
+            </p>
+            <ul>
+              <li><strong>Goal:</strong> Identify seasonal/temporal patterns and potential weather associations.</li>
+              <li><strong>Scope:</strong> ~16k crime records across categories; daily weather aggregated to monthly features.</li>
+              <li><strong>Stack:</strong> R (tidyverse, ggplot2, plotly, leaflet).</li>
+              <li><strong>Outputs:</strong> Time-series charts, category breakouts, animated seasonality, and hotspot maps.</li>
+            </ul>
+          </article>
+
+          <!-- Data -->
+          <article id="data">
+            <header><h2>Data & Processing</h2></header>
+            <ul>
+              <li><strong>Crime data:</strong> UK Police open data (location, month, crime type).</li>
+              <li><strong>Weather data:</strong> Local daily temperature, precipitation, wind; aggregated to month.</li>
+              <li><strong>Preprocessing:</strong> de-duplication, geo-filtering to Colchester area, date alignment,
+                mapping to LSOA/ward where available.</li>
+              <li><strong>Features:</strong> monthly totals per crime type; seasonal flags; weather summaries
+                (mean temp, total rain); school-holiday indicator (optional).</li>
+            </ul>
+          </article>
+
+          <!-- Method -->
+          <article id="method">
+            <header><h2>Methodology</h2></header>
+            <p>
+              I used an EDA-first workflow in R to visualise crime over time and space, then examined
+              correlations with weather features. The focus is on <em>explainable, stakeholder-friendly</em>
+              visuals rather than causal claims.
+            </p>
+            <ul>
+              <li><strong>Temporal:</strong> monthly time series, seasonal decomposition (STL), rolling means.</li>
+              <li><strong>Spatial:</strong> choropleths and hotspot dots via <code>leaflet</code>.</li>
+              <li><strong>Interactivity:</strong> tooltips, category filters via <code>plotly</code>.</li>
+              <li><strong>Statistics (lightweight):</strong> correlation matrices (Spearman), lag checks.</li>
+            </ul>
+            
+          </article>
+
+          <!-- Visuals -->
+          <article id="viz">
+            <header><h2>Key Visualisations</h2></header>
+            <ul>
+              <li>Monthly trendlines by crime type with seasonality overlays.</li>
+              <li>Animated faceted charts to highlight winter/summer behaviour.</li>
+              <li>Interactive map of hotspots by month or category (leaflet).</li>
+              <li>Weather vs. crime scatter panels with smoothing to suggest associations.</li>
+            </ul>
+          
+          </article>
+
+          <!-- Findings -->
+          <article id="results">
+            <header><h2>Findings & Insights</h2></header>
+            <ul>
+              <li>Clear <strong>seasonal fluctuation</strong> in certain categories (e.g., anti-social behaviour higher in warmer months).</li>
+              <li>Weather features show <strong>weak-to-moderate associations</strong> with some crime types
+                  (interpreted cautiously; correlation ≠ causation).</li>
+              <li>Hotspots are <strong>spatially persistent</strong> but show month-to-month intensity shifts.</li>
+              <li>Interactive visuals helped stakeholders <strong>explore hypotheses</strong> quickly without heavy stats.</li>
+            </ul>
+          </article>
+
+          <!-- Limitations -->
+          <article id="limits">
+            <header><h2>Limitations</h2></header>
+            <ul>
+              <li>Crime records reflect <em>reported</em> incidents (reporting bias possible).</li>
+              <li>Weather data aggregated monthly → reduces short-term signal.</li>
+              <li>Correlations do not imply causality; omitted variables may drive patterns.</li>
+              <li>Geocoding precision varies; map aggregations are approximate.</li>
+            </ul>
+          </article>
+
+          <!-- Reproducibility -->
+          <article id="repro">
+            <header><h2>Reproducibility</h2></header>
+            <ul>
+              <li>Scripted R workflow (data load → clean → feature build → visuals).</li>
+              <li>Config for city bounds and date range; deterministic output given inputs.</li>
+              <li>Exported HTML report (RMarkdown) for sharing with non-technical users.</li>
+            </ul>
+          </article>
+
+          <!-- Next steps -->
+          <article id="next">
+            <header><h2>Next Steps</h2></header>
+            <ul>
+              <li>Add daily-level modelling and lag structures (e.g., distributed lag models).</li>
+              <li>Bring in mobility/events (football, school holidays) for richer context.</li>
+              <li>Experiment with simple predictive baselines for monthly category totals.</li>
+              <li>Deploy a lightweight Shiny/Quarto dashboard for stakeholders.</li>
+            </ul>
+          </article>
+
+        </section>
+
+        <!-- Back -->
+        <footer>
+          <div class="pagination">
+            <a href="index.html#projects" class="button">← Back to Projects</a>
+          </div>
+        </footer>
+
+      </div><!-- /#main -->
+
+      <!-- Footer -->
+      <footer id="footer">
+        <section class="split contact">
+          <section class="alt"><h3>Location</h3><p>Colchester, United Kingdom</p></section>
+          <section><h3>Email</h3><p><a href="mailto:sakthibala7531@gmail.com">sakthibala7531@gmail.com</a></p></section>
+          <section>
+            <h3>Social</h3>
+            <ul class="icons alt">
+              <li><a href="https://www.linkedin.com/in/sakthivel-vinayagam" class="icon brands alt fa-linkedin" target="_blank" rel="noopener"></a></li>
+              <li><a href="https://github.com/SakthivelVinayagam" class="icon brands alt fa-github" target="_blank" rel="noopener"></a></li>
+              <li><a href="https://leetcode.com/u/Sakthi7531/" class="icon solid alt fa-code" target="_blank" rel="noopener"></a></li>
+            </ul>
+          </section>
+        </section>
+      </footer>
+
+      <div id="copyright">
+        <ul><li>&copy; 2025 Sakthivel Vinayagam</li><li>Design: <a href="https://html5up.net" target="_blank" rel="noopener">HTML5 UP</a></li></ul>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.scrollex.min.js"></script>
+    <script src="assets/js/jquery.scrolly.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>
